@@ -24,14 +24,10 @@ class App extends Component {
   }
 
   getHashParams = () => {
-    const hashParams = {};
-    let e = /([^&;=]+)=?([^&;]*)/g;
-    const q = window.location.hash.substring(1);
-    const r = /([^&;=]+)=?([^&;]*)/g;
-    e = r.exec(q);
-    while (e) {
-      hashParams[e[1]] = decodeURIComponent(e[2]);
-    }
+    let hashParams = {};
+    const str = window.location.href;
+    const url = new URL(str);
+    hashParams = new URLSearchParams(url.search);
     return hashParams;
   }
 
@@ -48,18 +44,19 @@ class App extends Component {
   }
 
   render() {
+    const { nowPlaying, loggedIn } = this.state;
     return (
       <div className="App">
         <a href="http://localhost:8888">
           <button className="login-button" type="button">Login to Spotify</button>
         </a>
         <div>
-          Now Playing: {this.state.nowPlaying.name}
+          Now Playing: {nowPlaying.name}
         </div>
         <div>
-          <img src={this.state.nowPlaying.albumArt} alt="album-cover" style={{ height: 150 }} />
+          <img src={nowPlaying.albumArt} alt="album-cover" style={{ height: 150 }} />
         </div>
-        { this.state.loggedIn && (
+        { loggedIn && (
           <button type="button" onClick={() => this.getNowPlaying()}>
             Check Now Playing
           </button>
