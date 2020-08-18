@@ -12,7 +12,6 @@ class App extends Component {
   constructor() {
     super();
     const params = this.getHashParams();
-    console.log(params);
     const token = params.access_token;
     if (token) {
       spotifyApi.setAccessToken(token);
@@ -24,10 +23,15 @@ class App extends Component {
   }
 
   getHashParams = () => {
-    let hashParams = {};
-    const str = window.location.href;
-    const url = new URL(str);
-    hashParams = new URLSearchParams(url.search);
+    const hashParams = {};
+    let e = /([^&;=]+)=?([^&;]*)/g;
+    const r = /([^&;=]+)=?([^&;]*)/g;
+    const q = window.location.hash.substring(1);
+    e = r.exec(q);
+    while (e) {
+      hashParams[e[1]] = decodeURIComponent(e[2]);
+      e = r.exec(q);
+    }
     return hashParams;
   }
 
