@@ -1,5 +1,6 @@
 // == Import npm
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import SpotifyWebApi from 'spotify-web-api-js';
 
 // == Import
@@ -8,21 +9,9 @@ import './index.scss';
 const spotifyApi = new SpotifyWebApi();
 
 // == Composant
-class App extends Component {
-  constructor() {
-    super();
-    const params = this.getHashParams();
-    const token = params.access_token;
-    if (token) {
-      spotifyApi.setAccessToken(token);
-    }
-    this.state = {
-      loggedIn: token ? true : false,
-      nowPlaying: { name: 'Not Checked', albumArt: '' },
-    };
-  }
-
-  getHashParams = () => {
+const App = ({ nowPlaying, checkNowPlaying }) => {
+  const value = '';
+  const getHashParams = () => {
     const hashParams = {};
     let e = /([^&;=]+)=?([^&;]*)/g;
     const r = /([^&;=]+)=?([^&;]*)/g;
@@ -33,42 +22,39 @@ class App extends Component {
       e = r.exec(q);
     }
     return hashParams;
+  };
+
+  const params = getHashParams();
+  const token = params.access_token;
+  if (token) {
+    spotifyApi.setAccessToken(token);
   }
 
-  getNowPlaying = () => {
-    spotifyApi.getMyCurrentPlaybackState()
-      .then((response) => {
-        this.setState({
-          nowPlaying: {
-            name: response.item.name,
-            albumArt: response.item.album.images[0].url,
-          },
-        });
-      });
-  }
-
-  render() {
-    const { nowPlaying, loggedIn } = this.state;
-    return (
-      <div className="App">
-        <a href="http://localhost:8888">
-          <button className="login-button" type="button">Login to Spotify</button>
-        </a>
-        <div>
-          Now Playing: {nowPlaying.name}
-        </div>
-        <div>
-          <img src={nowPlaying.albumArt} alt="album-cover" style={{ height: 150 }} />
-        </div>
-        { loggedIn && (
-          <button type="button" onClick={() => this.getNowPlaying()}>
-            Check Now Playing
-          </button>
-        )}
+  const loggedIn = token ? true : false;
+  return (
+    <div className="App">
+      <a href="http://localhost:8888">
+        <button className="login-button" type="button">Login to Spotify</button>
+      </a>
+      <div>
+        Now Playing: {nowPlaying.name}
       </div>
-    );
-  }
-}
+      <div>
+        <img src={nowPlaying.albumArt} alt="album-cover" style={{ height: 150 }} />
+      </div>
+      { loggedIn && (
+        <button type="button" onClick={() => checkNowPlaying()}>
+          Check Now Playing
+        </button>
+      )}
+    </div>
+  );
+};
+
+App.propTypes = {
+  nowPlaying: PropTypes.object.isRequired,
+  checkNowPlaying: PropTypes.func.isRequired,
+};
 
 // == Export
 export default App;
