@@ -3,7 +3,13 @@ import {
 } from 'src/actions/user';
 
 const initialState = {
-  nowPlaying: { name: 'Not Checked', albumArt: '' },
+  nowPlaying: {
+    songName: 'Not Checked',
+    albumArt: '',
+    artistName: 'Not Checked',
+    albumName: 'Not Checked',
+    releaseDate: 'Not Checked',
+  },
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -12,8 +18,11 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         nowPlaying: {
-          name: action.name,
+          songName: action.songName,
           albumArt: action.albumArt,
+          artistName: action.artistName,
+          albumName: action.albumName,
+          releaseDate: action.releaseDate,
         },
       };
     default: return state;

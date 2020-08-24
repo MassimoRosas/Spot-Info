@@ -10,7 +10,6 @@ const spotifyApi = new SpotifyWebApi();
 
 // == Composant
 const App = ({ nowPlaying, checkNowPlaying }) => {
-  const value = '';
   const getHashParams = () => {
     const hashParams = {};
     let e = /([^&;=]+)=?([^&;]*)/g;
@@ -26,20 +25,33 @@ const App = ({ nowPlaying, checkNowPlaying }) => {
 
   const params = getHashParams();
   const token = params.access_token;
+
+  let loggedIn = false;
   if (token) {
     spotifyApi.setAccessToken(token);
+    loggedIn = true;
   }
 
-  const loggedIn = token ? true : false;
   return (
     <div className="App">
       <a href="http://localhost:8888">
         <button className="login-button" type="button">Login to Spotify</button>
       </a>
-      <div>
-        Now Playing: {nowPlaying.name}
+      <div className="now-playing_song-data">
+        <p className="now-playing_song-name">
+          Now Playing: {nowPlaying.songName}
+        </p>
+        <p className="now-playing_song-artist">
+          Artist: {nowPlaying.artistName}
+        </p>
+        <p className="now-playing_song-album">
+          Album: {nowPlaying.albumName}
+        </p>
+        <p className="now-playing_song-date">
+          Release date: {nowPlaying.releaseDate}
+        </p>
       </div>
-      <div>
+      <div className="now-playing_song-cover">
         <img src={nowPlaying.albumArt} alt="album-cover" style={{ height: 150 }} />
       </div>
       { loggedIn && (

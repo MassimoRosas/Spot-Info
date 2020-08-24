@@ -32,7 +32,13 @@ const userMiddleware = (store) => (next) => (action) => {
       spotifyApi.getMyCurrentPlaybackState(token)
         .then((response) => {
           console.log(response);
-          store.dispatch(getNowPlaying(response.item.name, response.item.album.images[0].url));
+          store.dispatch(getNowPlaying(
+            response.item.name,
+            response.item.album.images[0].url,
+            response.item.artists[0].name,
+            response.item.album.name,
+            response.item.album.release_date,
+          ));
         })
         .catch((error) => {
           console.warn(error);
