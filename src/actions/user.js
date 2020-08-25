@@ -1,24 +1,19 @@
-export const CHECK_NOW_PLAYING = 'CHECK_NOW_PLAYING';
-export const GET_NOW_PLAYING = 'GET_NOW_PLAYING';
+export const CHECK_USER_DATA = 'CHECK_USER_DATA';
+export const GET_USER_DATA = 'GET_USER_DATA';
 
-export const getNowPlaying = (
-  songName,
-  albumArt,
-  artistName,
-  albumName,
-  releaseDate,
-  duration,
+export const getUserData = (
+  country, displayName, email, followers, avatar, product,
 ) => ({
-  type: GET_NOW_PLAYING,
-  songName,
-  albumArt,
-  artistName,
-  albumName,
-  releaseDate,
-  duration,
+  type: GET_USER_DATA,
+  country,
+  displayName,
+  email,
+  followers,
+  avatar,
+  product,
 });
 
 // MIDDLEWARE ACTIONS
-export const checkNowPlaying = () => ({
-  type: CHECK_NOW_PLAYING,
+export const checkUserData = () => ({
+  type: CHECK_USER_DATA,
 });

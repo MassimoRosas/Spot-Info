@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 // == Import
 import './index.scss';
 import NowPlaying from 'src/containers/NowPlaying';
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Home from 'src/components/Home';
 
 const spotifyApi = new SpotifyWebApi();

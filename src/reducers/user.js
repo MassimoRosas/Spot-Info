@@ -1,29 +1,30 @@
 import {
-  GET_NOW_PLAYING,
+  GET_USER_DATA,
 } from 'src/actions/user';
 
 const initialState = {
-  nowPlaying: {
-    songName: 'Not Checked',
-    albumArt: '',
-    artistName: 'Not Checked',
-    albumName: 'Not Checked',
-    releaseDate: 'Not Checked',
+  user: {
+    country: '',
+    displayName: '',
+    email: '',
+    followers: {},
+    avatar: '',
+    product: '',
   },
 };
 
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case GET_NOW_PLAYING:
+    case GET_USER_DATA:
       return {
         ...state,
-        nowPlaying: {
-          songName: action.songName,
-          albumArt: action.albumArt,
-          artistName: action.artistName,
-          albumName: action.albumName,
-          releaseDate: action.releaseDate,
-          duration: action.duration,
+        user: {
+          country: action.country,
+          displayName: action.displayName,
+          email: action.email,
+          followers: action.followers,
+          avatar: action.avatar,
+          product: action.product,
         },
       };
     default: return state;

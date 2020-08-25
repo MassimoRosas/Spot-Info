@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import NowPlaying from 'src/components/NowPlaying';
 
-import { checkNowPlaying } from 'src/actions/user';
+import { checkNowPlaying } from 'src/actions/nowPlaying';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  nowPlaying: state.user.nowPlaying,
+  nowPlaying: state.nowPlaying.nowPlaying,
 });
 
 // === mapDispatchToProps

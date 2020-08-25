@@ -1,13 +1,13 @@
 import SpotifyWebApi from 'spotify-web-api-js';
 
 import {
-  CHECK_USER_DATA,
-  getUserData,
-} from 'src/actions/user';
+  CHECK_NOW_PLAYING,
+  getNowPlaying,
+} from 'src/actions/nowPlaying';
 
 const spotifyApi = new SpotifyWebApi();
 
-const userMiddleware = (store) => (next) => (action) => {
+const nowPlayingMiddleware = (store) => (next) => (action) => {
   const getHashParams = () => {
     const hashParams = {};
     let e = /([^&;=]+)=?([^&;]*)/g;
@@ -28,17 +28,17 @@ const userMiddleware = (store) => (next) => (action) => {
   }
 
   switch (action.type) {
-    case CHECK_USER_DATA: {
-      spotifyApi.getMe(token)
+    case CHECK_NOW_PLAYING: {
+      spotifyApi.getMyCurrentPlaybackState(token)
         .then((response) => {
           console.log(response);
-          store.dispatch(getUserData(
-            response.country,
-            response.display_name,
-            response.email,
-            response.followers,
-            response.images[0].url,
-            response.product,
+          store.dispatch(getNowPlaying(
+            response.item.name,
+            response.item.album.images[0].url,
+            response.item.artists[0].name,
+            response.item.album.name,
+            response.item.album.release_date,
+            response.item.duration_ms,
           ));
         })
         .catch((error) => {
@@ -52,4 +52,4 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
   }
 };
-export default userMiddleware;
+export default nowPlayingMiddleware;
