@@ -23,6 +23,7 @@ const userReducer = (state = initialState, action = {}) => {
           artistName: action.artistName,
           albumName: action.albumName,
           releaseDate: action.releaseDate,
+          duration: action.duration,
         },
       };
     default: return state;

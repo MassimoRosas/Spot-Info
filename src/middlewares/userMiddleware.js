@@ -38,6 +38,7 @@ const userMiddleware = (store) => (next) => (action) => {
             response.item.artists[0].name,
             response.item.album.name,
             response.item.album.release_date,
+            response.item.duration_ms,
           ));
         })
         .catch((error) => {
