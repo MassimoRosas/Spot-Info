@@ -5,6 +5,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 // == Import
 import './index.scss';
 import NowPlaying from 'src/containers/NowPlaying';
+import Header from 'src/components/Header';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -34,11 +35,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {!isLogged && (
-        <a href="http://localhost:8888">
-          <button className="login-button" type="button">Login to Spotify</button>
-        </a>
-      )}
+      <Header isLogged={isLogged} />
       <NowPlaying />
     </div>
   );

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import './nowplaying.scss';
+
 const NowPlaying = ({ nowPlaying, checkNowPlaying }) => {
   useEffect(() => {
     checkNowPlaying();
