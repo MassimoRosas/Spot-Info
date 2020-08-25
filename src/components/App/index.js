@@ -1,11 +1,13 @@
 // == Import npm
 import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
+import { Route } from 'react-router-dom';
 
 // == Import
 import './index.scss';
 import NowPlaying from 'src/containers/NowPlaying';
 import Header from 'src/components/Header';
+import Home from 'src/components/Home';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -36,7 +38,14 @@ const App = () => {
   return (
     <div className="App">
       <Header isLogged={isLogged} />
-      <NowPlaying />
+
+      <Route path="/" exact>
+        <Home />
+      </Route>
+
+      <Route path="/nowplaying">
+        <NowPlaying />
+      </Route>
     </div>
   );
 };
