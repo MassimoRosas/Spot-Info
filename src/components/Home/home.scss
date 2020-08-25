@@ -1,0 +1,31 @@
+.home {
+  padding: 1.5rem;
+  text-align: center;
+  background-color: rgb(216, 250, 237);
+
+  .home-title {
+    font-size: 5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 4rem 0;
+  }
+
+  .home-description {
+    font-style: italic;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .home {
+    display: block;
+    margin: auto;
+
+    .home-title {
+
+    }
+
+    .home-description {
+
+    }
+  }
+}

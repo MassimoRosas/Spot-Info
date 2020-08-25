@@ -15,7 +15,7 @@ const NowPlaying = ({ nowPlaying, checkNowPlaying }) => {
   };
 
   return (
-    <div className="now-playing_container">
+    <main className="now-playing">
       <div className="now-playing_song-data">
         <p className="now-playing_song-name">
           Now Playing: {nowPlaying.songName}
@@ -34,9 +34,9 @@ const NowPlaying = ({ nowPlaying, checkNowPlaying }) => {
         </p>
       </div>
       <div className="now-playing_song-cover">
-        <img src={nowPlaying.albumArt} alt="album-cover" style={{ height: 150 }} />
+        <img src={nowPlaying.albumArt} alt="album-cover" />
       </div>
-    </div>
+    </main>
   );
 };
 

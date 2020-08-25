@@ -1,0 +1,68 @@
+.header {
+  background-color: rgb(97, 173, 150);
+  padding: 1.5rem;
+
+  .login-button {
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    border: solid white 1px;
+    padding: 1rem;
+    border-radius: 2rem;
+    color: white;
+  }
+
+  .header-user {
+    display: flex;
+    justify-content: center;
+
+    .header-user-avatar {
+      width: 5rem;
+      border-radius: 4rem;
+      margin-right: 0.5rem;
+    }
+
+    .header-user-name {
+      font-weight: bold;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .header-user-email {
+      font-style: italic;
+    }
+  }
+
+  .header-nav {
+    display: flex;
+    margin: 0.5rem 0;
+    justify-content: center;
+
+    .header-nav-item {
+      background-color: #B8E7D5;
+      margin: 0 1rem;
+      padding: 0.5rem;
+      border-radius: 2rem;
+    }
+
+    .header-nav-item-active {
+      background-color: #fff;
+      color: #61AD96;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+
+    .header-nav {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.5rem;
+
+      .header-nav-item {
+        margin: 0.3rem;
+      }
+    }
+  }
+}

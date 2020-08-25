@@ -19,11 +19,13 @@ const Header = ({ isLogged, checkUserData, user }) => {
       {isLogged && (
       <>
         <div className="header-user">
-          <img src={user.avatar} alt="user avatar" />
-          <h2>{user.displayName}</h2>
-          <p>{user.country}</p>
-          <p>{user.product}</p>
-          <p>{user.email}</p>
+          <img className="header-user-avatar" src={user.avatar} alt="user avatar" />
+          <div className="header-user-data">
+            <h2 className="header-user-name">{user.displayName}</h2>
+            <p className="header-user-email">{user.email}</p>
+            <p className="header-user-country">Country: {user.country}</p>
+            <p className="header-user-status">Status: {user.product}</p>
+          </div>
 
         </div>
         <nav className="header-nav">

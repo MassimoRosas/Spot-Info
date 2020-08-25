@@ -1,4 +1,29 @@
-.login-button {
-  display: block;
-  margin: 10px auto;
-}
+ body {
+  background-color: rgb(184, 231, 213);
+  height: 95vh;
+
+  #root {
+    height: 100%;
+
+    .app {
+      display: block;
+      margin: 10px;
+      background-color: rgb(216, 250, 237);
+      height: 100%;
+      max-width: 1000px;
+    }
+  }
+ }
+
+ @media screen and (min-width: 1024px) {
+   body {
+
+    #root {
+
+      .app {
+        margin: 10px auto;
+        display: flex;
+      }
+    }
+   }
+ }
