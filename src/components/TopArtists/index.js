@@ -8,7 +8,7 @@ const TopArtists = ({ topArtists }) => (
   <main className="topartists">
     { topArtists.map((artist) => (
       <div key={artist.name} className="topartists-artist">
-        {!artist.images.length && <img src={avatar} alt={artist.name} />}
+        {!artist.images.length && <img className="topartists-artist-avatar" src={avatar} alt={artist.name} />}
         {artist.images.length && (
           <img
             className="topartists-artist-avatar"
@@ -16,18 +16,20 @@ const TopArtists = ({ topArtists }) => (
             alt={artist.name}
           />
         )}
-        <p className="topartists-artist-name">Name: {artist.name}</p>
-        <p className="topartists-artist-popularity">Popularity: {artist.popularity}/100</p>
-        <p className="topartists-artist-followers">Followers: {artist.followers.total}</p>
-        <p className="topartists-artist-genres-list">Genres: </p>
-        <ul>
-          {!artist.genres.length && (
-            <li className="topartists-artist-genres-element">Not defined</li>
-          )}
-          {artist.genres.map((genre) => (
-            <li key={genre} className="topartists-artist-genres-element">{genre}</li>
-          ))}
-        </ul>
+        <div className="topartists-artist-infos">
+          <p className="topartists-artist-name">Name: {artist.name}</p>
+          <p className="topartists-artist-popularity">Popularity: {artist.popularity}/100</p>
+          <p className="topartists-artist-followers">Followers: {artist.followers.total}</p>
+          <p>Genres: </p>
+          <ul className="topartists-artist-genres-list">
+            {!artist.genres.length && (
+              <li className="topartists-artist-genres-element">Not defined</li>
+            )}
+            {artist.genres.map((genre) => (
+              <li key={genre} className="topartists-artist-genres-element">{genre}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     ))}
   </main>
