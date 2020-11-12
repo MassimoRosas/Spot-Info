@@ -8,7 +8,7 @@ import './index.scss';
 import Header from 'src/containers/Header';
 import Home from 'src/components/Home';
 import NowPlaying from 'src/containers/NowPlaying';
-import TopArtists from 'src/components/TopArtists';
+import TopArtists from 'src/containers/TopArtists';
 
 const spotifyApi = new SpotifyWebApi();
 

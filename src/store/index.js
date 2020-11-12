@@ -1,13 +1,15 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from 'src/reducers/index';
-import nowPlayingMiddleware from 'src/middlewares/nowPlayingMiddleware';
 import userMiddleware from 'src/middlewares/userMiddleware';
+import nowPlayingMiddleware from 'src/middlewares/nowPlayingMiddleware';
+import topArtistsMiddleware from 'src/middlewares/topArtistsMiddleware';
 
 const enhancers = composeWithDevTools(
   applyMiddleware(
-    nowPlayingMiddleware,
     userMiddleware,
+    nowPlayingMiddleware,
+    topArtistsMiddleware,
   ),
 );
 

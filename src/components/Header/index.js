@@ -4,7 +4,12 @@ import { NavLink } from 'react-router-dom';
 
 import './header.scss';
 
-const Header = ({ isLogged, checkUserData, user }) => {
+const Header = ({
+  isLogged,
+  checkUserData,
+  user,
+  checkTopArtists,
+}) => {
   useEffect(() => {
     checkUserData();
   }, []);
@@ -35,7 +40,14 @@ const Header = ({ isLogged, checkUserData, user }) => {
           <NavLink to="/nowplaying" className="header-nav-item" activeClassName="header-nav-item-active">
             Now playing
           </NavLink>
-          <NavLink to="/topartists" className="header-nav-item" activeClassName="header-nav-item-active">
+          <NavLink
+            to="/topartists"
+            className="header-nav-item"
+            activeClassName="header-nav-item-active"
+            onClick={() => {
+              checkTopArtists();
+            }}
+          >
             My top artists
           </NavLink>
         </nav>
@@ -49,6 +61,7 @@ Header.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   checkUserData: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
+  checkTopArtists: PropTypes.func.isRequired,
 };
 
 export default Header;
