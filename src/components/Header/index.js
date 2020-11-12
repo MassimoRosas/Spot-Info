@@ -33,7 +33,10 @@ const Header = ({ isLogged, checkUserData, user }) => {
             Home
           </NavLink>
           <NavLink to="/nowplaying" className="header-nav-item" activeClassName="header-nav-item-active">
-            Now Playing
+            Now playing
+          </NavLink>
+          <NavLink to="/topartists" className="header-nav-item" activeClassName="header-nav-item-active">
+            My top artists
           </NavLink>
         </nav>
       </>

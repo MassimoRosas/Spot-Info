@@ -31,7 +31,6 @@ const userMiddleware = (store) => (next) => (action) => {
     case CHECK_USER_DATA: {
       spotifyApi.getMe(token)
         .then((response) => {
-          console.log(response);
           store.dispatch(getUserData(
             response.country,
             response.display_name,

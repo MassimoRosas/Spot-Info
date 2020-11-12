@@ -31,7 +31,6 @@ const nowPlayingMiddleware = (store) => (next) => (action) => {
     case CHECK_NOW_PLAYING: {
       spotifyApi.getMyCurrentPlaybackState(token)
         .then((response) => {
-          console.log(response);
           store.dispatch(getNowPlaying(
             response.item.name,
             response.item.album.images[0].url,

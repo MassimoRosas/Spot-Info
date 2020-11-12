@@ -5,9 +5,10 @@ import { Route } from 'react-router-dom';
 
 // == Import
 import './index.scss';
-import NowPlaying from 'src/containers/NowPlaying';
 import Header from 'src/containers/Header';
 import Home from 'src/components/Home';
+import NowPlaying from 'src/containers/NowPlaying';
+import TopArtists from 'src/components/TopArtists';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -45,6 +46,10 @@ const App = () => {
 
       <Route path="/nowplaying">
         <NowPlaying />
+      </Route>
+
+      <Route path="/topartists">
+        <TopArtists />
       </Route>
     </div>
   );
